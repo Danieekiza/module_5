@@ -1,4 +1,5 @@
 from house.houses import House
+import random
 
 
 def defolt():
@@ -40,5 +41,21 @@ def Test():
     h1.go_to(30)
 
 
+def Test_history():
+    house_name = ['Самолет', 'ПИК', 'СУ1', 'Левл', 'ЛСР', 'ЦДС', 'Марс']
+    num = 1
+    for name in house_name:
+        locals()[f"h{num}"] = House(name, random.randrange(2, 40, 2)) #  создаем в locals переменную 'h'+'num'
+        # класс House, name из списка, этаж рандом со 2 по 40 шаг 2
+        num += 1
+
+    print(locals()['h1'])  # обращение к переменной, созданной не на прямую
+    del (locals()['h1'])
+    print(locals()['h2'])
+    del (locals()['h2'])
+    print('House.houses_history', House.houses_history)
+
+
 if __name__ == '__main__':
-    Test()
+    # Test()
+    Test_history()

@@ -1,4 +1,10 @@
 class House:
+    houses_history = []
+
+    def __new__(cls, *args, **kwargs):
+        cls.houses_history.append(args)  # добавим в иторию название + этажность
+        return object.__new__(cls)
+
     def __init__(self, name, number_of_floors):
         self.name = name
         self.number_of_floors = number_of_floors
@@ -58,9 +64,13 @@ class House:
     def __str__(self):  # вызывается print()
         return f'Название: {self.name}, кол-во этажей: {self.number_of_floors}'
 
+    def __del__(self):
+        print(f'{self} снесён, но он останется в истории')
+
     def go_to(self, new_floor):
         if new_floor > self.number_of_floors or new_floor < 1:
             print('Такого этажа не существует')
         else:
             for floor in range(1, new_floor + 1):
-                print(floor)
+                print(floor,)
+        print()
