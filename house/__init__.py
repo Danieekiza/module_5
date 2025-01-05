@@ -1,3 +1,4 @@
-# from house.test import Test
+from house.test import *
 
 # Test()
+Test_history()
